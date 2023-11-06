@@ -12,7 +12,7 @@ export default function App() {
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber)
   }
-  let screen = userNumber ? <GameScreen /> : <StartGameScreen pickedNumberHandler={pickedNumberHandler} />;
+  let screen = userNumber ? <GameScreen userNumber={userNumber}/> : <StartGameScreen pickedNumberHandler={pickedNumberHandler} />;
 
   return (
     <LinearGradient colors={[Colors.primary800, Colors.accent500]} style={styles.rootScreen}>
