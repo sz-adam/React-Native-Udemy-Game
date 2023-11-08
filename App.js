@@ -7,15 +7,20 @@ import GameScreen from './screens/GameScreen';
 import GameOverScreen from './screens/GameOverScreen';
 import Colors from './constans/colors'
 import {useFonts} from 'expo-font'
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState()
   const [gameOver, setGameOver] = useState(true)
 
-  useFonts({
+ const [fontsLoaded]= useFonts({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
-  })
+  });
+
+  if(!fontsLoaded){
+    return<AppLoading/>
+  }
 
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber)
