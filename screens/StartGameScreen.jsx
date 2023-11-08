@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Colors from '../constans/colors'
 import Title from '../components/ui/Title'
 import Card from '../components/ui/Card'
+import InstructionText from '../components/ui/InstructionText'
 
 function StartGameScreen({ pickedNumberHandler }) {
   const [enteredNumber, setEnteredNumber] = useState('')
@@ -30,7 +31,7 @@ function StartGameScreen({ pickedNumberHandler }) {
     <View style={styles.rootcontainer}>
       <Title >Guess My Number</Title>
       <Card>
-        <Text style={styles.instructionText}>Enter a Number</Text>
+        <InstructionText style={styles.instructionText}>Enter a Number</InstructionText>
         <TextInput style={styles.numberInput}
           maxLength={2}
           keyboardType='number-pad'
@@ -59,10 +60,6 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
  
-  instructionText:{
-    color:Colors.accent500,
-    fontSize:24
-  },
   numberInput: {
     height: 50,
     width: 50,
