@@ -54,12 +54,12 @@ function StartGameScreen({ pickedNumberHandler }) {
 export default StartGameScreen
 
 const styles = StyleSheet.create({
-  rootcontainer:{
-    flex:1,
-    marginTop:100,
-    alignItems:'center'
+  rootcontainer: {
+    flex: 1,
+    marginTop: 100,
+    alignItems: 'center'
   },
- 
+
   numberInput: {
     height: 50,
     width: 50,

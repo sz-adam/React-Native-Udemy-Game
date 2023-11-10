@@ -5,7 +5,7 @@ import gameOver from '../assets/images/success.png'
 import Colors from '../constans/colors'
 import PrimaryButton from '../components/ui/PrimaryButton'
 
-function GameOverScreen({roundsNumber,userNumber, onStartNewGame}) {
+function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
     return (
         <View style={styles.rootContainer}>
             <Title>GameOver</Title>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     imageContainer: {
-         width: 300,
+        width: 300,
         height: 300,
         borderRadius: 150,
         borderWidth: 3,
@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
         margin: 36,
     },
     image: {
-         width: '100%',
+        width: '100%',
         height: '100%',
     },
     summaryText: {
         fontFamily: 'open-sans',
         fontSize: 24,
         textAlign: 'center',
-        marginBottom:24
+        marginBottom: 24
     },
     hightlight: {
         fontFamily: 'open-sans-bold',
