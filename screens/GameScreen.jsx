@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Alert, Text, FlatList } from 'react-native'
+import { View, StyleSheet, Alert, FlatList, useWindowDimensions } from 'react-native'
 import Title from '../components/ui/Title'
 import { useState, useEffect } from 'react';
 import NumberContainer from '../components/game/NumberContainer';
@@ -27,6 +27,7 @@ function GameScreen({ userNumber, gameOverHandler }) {
   const initialGuess = generateRandomBetween(1, 100, userNumber)
   const [currentGuess, setCurrentGuess] = useState(initialGuess)
   const [guessRounds, setGuessRounds] = useState([initialGuess])
+  const { width, height } = useWindowDimensions()
 
 
   useEffect(() => {
@@ -58,10 +59,8 @@ function GameScreen({ userNumber, gameOverHandler }) {
 
   const guessRoundsListLength = guessRounds.length
 
-
-  return (
-    <View style={styles.screen}>
-      <Title >Opponent's Guess</Title>
+  let content =
+    <>
       <NumberContainer>{currentGuess} </NumberContainer>
       <Card>
         <InstructionText style={styles.InstructionText}>Higher or lowe?</InstructionText>
@@ -74,6 +73,31 @@ function GameScreen({ userNumber, gameOverHandler }) {
           </View>
         </View>
       </Card>
+    </>
+
+  if (width > 500) {
+    content = (
+      <>    
+        <View style={styles.buttonsContainerWide}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGeusshandler.bind(this, 'lower')}><Ionicons name='md-remove' size={24} color='white' /></PrimaryButton>
+          </View>
+
+
+          <NumberContainer>{currentGuess} </NumberContainer>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGeusshandler.bind(this, 'greater')}><Ionicons name='md-add' size={24} color='white' /></PrimaryButton>
+          </View>
+        </View>
+      </>
+    )
+  }
+
+
+  return (
+    <View style={styles.screen}>
+      <Title >Opponent's Guess</Title>
+      {content}
 
       {/*{guessRounds.map(guessRound =><Text key={guessRound}>{guessRound}</Text>)}**/}
       <View style={styles.listContainer}>
@@ -93,7 +117,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 22,
-    alignItems:'center'
+    alignItems: 'center'
   },
   InstructionText: {
     marginBottom: 12,
@@ -103,6 +127,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1
+  },
+
+  buttonsContainerWide: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   listContainer: {
     flex: 1,
